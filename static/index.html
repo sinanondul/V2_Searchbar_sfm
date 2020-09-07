@@ -1,0 +1,48 @@
+<html>
+    <head>
+      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
+      <link rel="stylesheet" type="text/css" href="/static/styles.css">   
+    </head>
+      <body>  
+        <div class="search-area js-search-area">
+          <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
+            <button type="submit" onclick="location.href = 'http://localhost:3000/products';">
+              GO TO PRODUCTS
+            </button>
+          </div>
+         
+          <h1>
+        <div id="waw-search-results" class="waw-search-container waw-open " >
+          <div class="waw-search-sidebar">
+            <p id="sidebar"></p>
+              <h3 class="waw-category-title">Kategoriler</h3>
+                <hr>
+                  <ul data-group="categories" class="waw-cat-list">
+                    <li>
+                      
+                    </li>
+                  </ul>
+                  <h3 class="waw-category-title">Markalar</h3>
+                    <hr>
+                    <ul></ul>            
+          </div>
+        </div>
+          </h1>
+            <!--div id="popUp"></div--> 
+            <div>
+              
+              <div id="pBox"></div>
+            </div>
+        </div>
+
+       
+
+
+
+        </body>
+        
+        
+       
+        <script src="/static/SearchBox.js"></script>
+
+</html>
