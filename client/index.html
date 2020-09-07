@@ -1,12 +1,12 @@
 <html>
     <head>
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-      <link rel="stylesheet" type="text/css" href="/static/styles.css">   
+      <link rel="stylesheet" type="text/css" href="../client/styles.css">   
     </head>
       <body>  
         <div class="search-area js-search-area">
           <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
-            <button type="submit" onclick="location.href = 'http://localhost:3000/products';">
+            <button type="submit" onclick="fetchResult()">
               GO TO PRODUCTS
             </button>
           </div>
@@ -52,7 +52,7 @@
       </div>
 
       
-        <script src="/static/SearchBox.js"></script>
+        <script src="../client/SearchBox.js"></script>
         </body>
         
 
