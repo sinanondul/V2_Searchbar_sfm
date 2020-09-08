@@ -20,7 +20,8 @@ const fetchResult=()=>{
     .then(res=>{
         list2=res.data
         console.log(list2)
-    })
+    });
+}
     
     
     // $.get('http://localhost:3000/products'),(data,status)=>{
@@ -28,16 +29,11 @@ const fetchResult=()=>{
     //     list2=data
     //     console.log(list2)
     // }
-}
-
-
 
 const searchBar = document.getElementById("searchBar");
 
-window.onload=function(){
-
+window.onload = function(){
 popUp = document.getElementById("popUp");
-
 
 var resM =[];
 var resK=[];
@@ -61,11 +57,32 @@ searchBar.addEventListener("keyup", (a)=>{
         var stayUp = (sv.length >= 2);
         if(stayUp){
             fetchResult()
+        
+
+        $("h1").show("slow", ()=>{
+                console.log("Showing SideBar")
+        });
+        $("h2").show("slow", ()=>{
+                console.log("Showing Search Results Pane")
+        });
         }
+        else{
+            $("h1").hide("slow", ()=>{
+                console.log("Hiding SideBar")
+            })
+            $("h2").show("slow", ()=>{
+                console.log("HidingSearch Results Pane")
+            })
+        }
+
+    });
+
+}
+
+
         // if(stayUp){  
         //     console.log("Searching '"+ sv + "' ..");
-        //     $("h1").show("slow", ()=>{
-        //         console.log("Showing SideBar");
+
         //     });
         //     $("h2").show("slow", ()=>{
         //         console.log("Showing Search Results Pane");
@@ -130,36 +147,3 @@ searchBar.addEventListener("keyup", (a)=>{
         //             // $("#catlist").append(node);
                
 
-
-        //     }
-        // }
-        // else{
-        //     $("h1").hide("fast", ()=>{
-        //         console.log("Query < 2")
-        //     })
-        // }
-}
-);
-
-
-
-var sidebar = document.getElementById("popUp")
-
-var Cpop =  '<div class="waw-search-container waw-open" id="waw-search-results">' +
-            '<div class="waw-search-sidebar">'+
-                    '<p id="sidebar"></p>'+
-                    '<h3 class="waw-category-title">Kategoriler</h3>'+
-                        '<ul data-group="categories" class="waw-cat-list"><li data-link=' 
-                    '<hr>'+
-                    '<h3 class="waw-category-title">Markalar</h3>'+
-                        '<ul data-group="categories" class="waw-cat-list"><li data-link= ></li></ul>'+
-                    '<hr>'+
-                '</div></div>';
-//
-var Cside =  '<div class="waw-search-sidebar"></div>' +
- '<h3 class="waw-category-title">Kategoriler</h3><hr>'+
-    '<li><ul> </ul></li>'+
-     '<h3 class="waw-category-title">Markalar</h3><hr>';
-
-
-};

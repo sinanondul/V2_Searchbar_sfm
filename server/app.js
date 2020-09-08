@@ -17,7 +17,13 @@ app.listen(3000, function () {
   console.log("Example app listening on port 3000!");
 });
 
-mongoose.connect(process.env.DBURI);
+mongoose.connect(process.env.DBURI,  { useNewUrlParser: true }, (err, res)=>{
+  
+  if(err) throw err;
+  else 
+  console.log("Connection Established!" );
+
+});
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/../client/index.html'));
