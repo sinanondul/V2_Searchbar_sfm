@@ -1,0 +1,19 @@
+{
+  "name": "v2_searchbar_sfm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinanondul/V2_Searchbar_sfm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sinanondul/V2_Searchbar_sfm/issues"
+  },
+  "homepage": "https://github.com/sinanondul/V2_Searchbar_sfm#readme"
+}
