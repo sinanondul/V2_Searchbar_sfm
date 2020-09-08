@@ -1,12 +1,12 @@
 <html>
     <head>
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-      <link rel="stylesheet" type="text/css" href="/static/styles.css">   
+      <link rel="stylesheet" type="text/css" href="../client/styles.css">   
     </head>
       <body>  
         <div class="search-area js-search-area">
           <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
-            <button type="submit" onclick="location.href = 'http://localhost:3000/products';">
+            <button type="submit" onclick="fetchResult()">
               GO TO PRODUCTS
             </button>
           </div>
@@ -26,8 +26,30 @@
                     <ul id=brlist></ul>            
           </div>
         </div>
+        
         </h1>
-        <h2>  
+        <h2>
+          <div class= " waw-search-products">
+            <h3 class="waw-category-title">Ürünler</h3>
+            <span class="w-cls">X</span>
+            <hr>
+            <div class="waw-products">
+              <div class="waw-product">
+                <div class="waw-product-item" >
+                  <div class="product-img"></div>
+                  <div class="product-detail"></div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </h2>
+      
+
+
+
+
+        <!--h2>  
           <div class="waw-search-products">
             <h3 class="waw-category-title">Ürünler</h3>
             <span class="w-cls">X</span>
@@ -49,10 +71,10 @@
               </a>
           </div> 
         </div>
-      </div>
+      </div> <h2-->
 
       
-        <script src="/static/SearchBox.js"></script>
+        <script src="../client/SearchBox.js"></script>
         </body>
         
 

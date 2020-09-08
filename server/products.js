@@ -1,5 +1,5 @@
 const express = require("express");
-const Product = require('../models/Product') ;
+const Product = require('./models/Product') ;
 
 const { json } = require("body-parser");
 const router = express.Router();
