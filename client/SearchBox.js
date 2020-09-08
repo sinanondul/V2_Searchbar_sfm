@@ -1,101 +1,51 @@
-const getURL="http://localhost:3000/pr"
-// var list = [];
-
-// $.getJSON('http://localhost:3000/products', function(data){
-//     $.each(data, function(key,val){
-//         list.push(val);
-//     });
-
-// });
-
-var list2=[]
-
+var varlist=[]
 const fetchResult2=()=>{
-    var val=document.getElementById('searchBar').value
+    var val=$('#searchBar').val
     console.log('FR2')
     fetch(`http://localhost:3000/products/${val}`,{
         method:'GET'
     })
     .then(res=>{
-        //res.json(res)
         console.log (res)
     })
     $.getJSON(`http://localhost:3000/products/${val}` , function(data){
         console.log(data)
     })
-    ;
 }
 
-const fetchResult=()=>{
-    var val=document.getElementById('searchBar').value
-    console.log('Reading')
-    var list = [];
-    $.getJSON(`http://localhost:3000/products/${val}`, function(data){
-        $.each(data, function(key,val){
-            list.push(val);
-        });
-    console.log();
-    });
-    };
+window.onload=function(){
 
-
-    
-    
-    // $.get('http://localhost:3000/products'),(data,status)=>{
-    //     console.log(status)
-    //     list2=data
-    //     console.log(list2)
-    // }
-
-const searchBar = document.getElementById("searchBar");
-
-window.onload = function(){
-popUp = document.getElementById("popUp");
-
-var resM =[];
-var resK=[];
-var c =0;
-
-
+const searchBar = $("#searchBar");
 $("h1").hide();
 $("h2").hide();   
 
-searchBar.addEventListener("keyup", (a)=>{
-        var results = [];
-        var node = document.getElementById("catlist");
-        var node2 = document.getElementById("brlist");
+searchBar.keyup(function(a){
+    $("#catlist").innerHTML="";
+    $("#brlist").innerHTML="";
+
+    var sv=searchBar.val()
+    var stayUp=(sv.length >= 2);
     
-        node.innerHTML="";
-        node2.innerHTML="";
+    if(stayUp){
+        fetchResult2()
+        $("h1").show("slow", ()=>{})
+        $("h2").show("slow", ()=>{})
+    }
+    else{
+        $("h1").hide("slow", ()=>{})
+        $("h2").hide("slow", ()=>{})
+    }
+    
 
 
-        var sv = a.target.value;
-        console.log("input: " + sv);
-        var stayUp = (sv.length >= 2);
-        if(stayUp){
-            
-            fetchResult()
-        
+});   
 
-        $("h1").show("slow", ()=>{
-                console.log("Showing SideBar")
-        });
-        // $("h2").show("slow", ()=>{
-        //         console.log("Showing Search Results Pane")
-        // });
-        }
-        else{
-            $("h1").hide("slow", ()=>{
-                console.log("Hiding SideBar")
-            })
-            $("h2").hide("slow", ()=>{
-                console.log("HidingSearch Results Pane")
-            })
-        }
 
-    });
+
+
 
 }
+
 
 
         // if(stayUp){  

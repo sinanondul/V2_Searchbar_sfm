@@ -26,13 +26,9 @@ mongoose.connect(process.env.DBURI,  { useNewUrlParser: true }, (err, res)=>{
   if(err) 
     throw err;
   else 
-    console.log("Connection Established!" );
+    console.log("Connection Established!");
 
 });
-
-// app.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname + '/../client/index.html'));
-// });
 
 app.get('/', function(req, res) {
   res.send("<form action=" + "'http://localhost:3000/products'>" +  "<input type='submit' value= 'List All Products' /></form>")

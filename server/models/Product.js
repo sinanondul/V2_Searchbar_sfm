@@ -18,8 +18,9 @@ const productSchema = new Schema({
     brand: {
         type: String,
         required: true
-    } 
+    }, 
+    links: String
 
-}, {collection:'collection1'});
-var Product = mongoose.model('Products', productSchema, 'collection1');
+}, {collection:'collection2'});
+var Product = mongoose.model('Products', productSchema, 'collection2');
 module.exports = Product;
