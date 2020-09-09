@@ -17,8 +17,8 @@ const productRoute = require('../server/routes/products');
 
 app.use('/products',productRoute);
 
-app.listen(3000, function () {
-  console.log("Example app listening on port 3000!");
+app.listen(3500, function () {
+  console.log("Example app listening on port 3500!");
 });
 
 mongoose.connect(process.env.DBURI,  { useNewUrlParser: true }, (err, res)=>{
