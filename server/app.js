@@ -31,7 +31,7 @@ mongoose.connect(process.env.DBURI,  { useNewUrlParser: true }, (err, res)=>{
 });
 
 app.get('/', function(req, res) {
-  res.send("<form action=" + "'http://localhost:3000/products'>" +  "<input type='submit' value= 'List All Products' /></form>")
+  res.send("<form action=" + "'http://localhost:3500/products'>" +  "<input type='submit' value= 'List All Products' /></form>")
 });
 
 

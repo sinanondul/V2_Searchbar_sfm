@@ -1,17 +1,37 @@
 var varlist=[]
-const fetchResult2=()=>{
-    var val=$('#searchBar').val
-    console.log('FR2')
-    fetch(`http://localhost:3000/products/${val}`,{
-        method:'GET'
-    })
-    .then(res=>{
-        console.log (res)
-    })
-    $.getJSON(`http://localhost:3000/products/${val}` , function(data){
-        console.log(data)
-    })
-}
+// function fetchResult2( ){
+//     var val=$('#searchBar').val();
+//     console.log(val)
+//     var a = fetch('http://localhost:3500/products/'+val, {method:'GET'})
+
+//     .then(async function (res){
+//         console.log(await res.json());
+//         //console.log(varlist);
+//         return await res.json();
+//     })
+// }
+
+async function fetchResult2( data = {}) {
+    var val2=$('#searchBar').val();
+    // Default options are marked with *
+    const response = await fetch('http://localhost:3500/products/'+val2, {
+      method: 'GET', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        'Content-Type': 'application/json'
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      //body: JSON.stringify(data)
+    });
+    
+    return response.json();
+     // parses JSON response into native JavaScript objects
+    
+  }
 
 window.onload=function(){
 
@@ -25,9 +45,13 @@ searchBar.keyup(function(a){
 
     var sv=searchBar.val()
     var stayUp=(sv.length >= 2);
-    
+    console.log(sv)
+    //console.log(varlist["title"])
+
     if(stayUp){
-        fetchResult2()
+        varlist = fetchResult2();
+        console.log(varlist);
+        //console.log(res);
         $("h1").show("slow", ()=>{})
         $("h2").show("slow", ()=>{})
     }
@@ -35,14 +59,17 @@ searchBar.keyup(function(a){
         $("h1").hide("slow", ()=>{})
         $("h2").hide("slow", ()=>{})
     }
+    $(window).click(function() {
+        $("h1").hide("slow", ()=>{})
+        $("h2").hide("slow", ()=>{})
+    });
+        
+    $('h1').click(function(event){
+        event.stopPropagation();
+    });
+
     
-
-
 });   
-
-
-
-
 
 }
 

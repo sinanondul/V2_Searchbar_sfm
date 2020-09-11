@@ -11,12 +11,17 @@ router.get("/", async(req, res)=>{
     }
 })
 
-router.get("/:searchVal", async (request, response) => {
+router.get("/:searchVal", async (request, response) => { 
+    
     try{
         const search=`.*${request.params.searchVal}.*`;
-        response.json( await  Product.find ({"brand":{"$regex":search,"$options":"i"}}));
-        response.json(await  Product.find ({"title":{"$regex":search,"$options":"i"}}));
-        response.json(await  Product.find ({"categories":{"$regex":search,"$options":"i"}}));
+        const x = await Product.find({$or:[{"title":{"$regex":search,"$options":"i"}},
+        {"categories":{"$regex":search,"$options":"i"}},
+         {"brand":{"$regex":search,"$options":"i"}}]}, 'title categories brand imglinks link')
+        var t = response.send(x);
+        //console.log(x)
+        return x.then
+        
     }catch (err) {
         response.json({message: err})
     }

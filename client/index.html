@@ -5,13 +5,15 @@
     </head>
       <body>  
         <div class="search-area js-search-area">
-          <input type="text" id= "searchBar" name="search_text" c autocomplete="off">
-            <button type="submit" onclick="fetchResult2()">
-              ARA
-            </button>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+          <form action="">
+              <input type="search" id="searchBar"  />
+              <i class="fa fa-search" onclick=fetchResult2()></i>
+          </form>
           </div>
          
         <h1>
+        <div id = "Rpanel">
         <div id="waw-search-results" class="waw-search-container waw-open " >
           <div class="waw-search-sidebar">
             <p id="sidebar"></p>
@@ -25,27 +27,28 @@
                     <hr>
                     <ul id=brlist></ul>            
           </div>
-        </div>
-        
-        </h1>
-        <h2>
-          <div class= " waw-search-products">
-            <h3 class="waw-category-title">Ürünler</h3>
-            <span class="w-cls">X</span>
-            <hr>
-            <div class="waw-products">
-              <div class="waw-product">
-                <div class="waw-product-item" >
-                  <div class="product-img"></div>
-                  <div class="product-detail"></div>
+          
+            <div class= " waw-search-products">
+              <h3 class="waw-category-title">Ürünler</h3>
+              <span class="w-cls">X</span>
+              <hr>
+              <div class="waw-products">
+                <div class="waw-product">
+                  <div class="waw-product-item" >
+                    <div class="product-img"></div>
+                    <div class="product-detail"></div>
+                  </div>
+                  
                 </div>
-                
               </div>
             </div>
-          </div>
-        </h2>
-      
+          
+        </div>
+        
+        
 
+      </h1>
+    </div>
 
 
 
