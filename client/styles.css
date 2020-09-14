@@ -65,6 +65,13 @@ form:hover .fa{
   color: white;
 }
 
+.catlist{
+  z-index: 99999999;
+}
+.brlist{
+  z-index: 1991919;
+}
+
 
 
       #waw-search-results.waw-search-container {
@@ -114,12 +121,12 @@ form:hover .fa{
         text-transform: capitalize;
       }
       #waw-search-results .waw-search-sidebar {
-        width: 25%;
+        width: 40%;
         padding: 20px 0px;
       }
       #waw-search-results .waw-search-sidebar h3 {
         padding-left: 20px;
-        padding-right: 20px;
+        padding-right: 15px;
       }
       #waw-search-results .waw-search-sidebar,
       #waw-search-results .waw-search-products {
@@ -244,6 +251,7 @@ form:hover .fa{
         -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         align-content: flex-start;
+        z-index: 99999;
       }
       
       #waw-search-results .waw-products .waw-product {

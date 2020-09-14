@@ -1,37 +1,31 @@
+
+"<a target="+"'_self'" +"href=$(link)>"+
+    +"<div class="+"'waw-product-item'>"+
+        "<div class="+"'product-img'> "+
+        "<img src="+
+        "'https://www.sefamerve.com/image/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg'>"+
+        "</div>"+
+        "<div class='product-detail'>"+
+        "<span title='Kadın Giyim'>Kadın Giyim</span>"+
+        "<h3 title='Karamel Lacivert Eşarp'>Karamel Lacivert Eşarp</h3>"+
+        "<span class="+ "'price'>69.00 TL</span>'"+
+       "</div>"+
+    "</div>"+
+"</a>"+
+"</div>";
+
 var varlist=[]
-// function fetchResult2( ){
-//     var val=$('#searchBar').val();
-//     console.log(val)
-//     var a = fetch('http://localhost:3500/products/'+val, {method:'GET'})
+function fetchResult2( ){
+    var val=$('#searchBar').val();
+    console.log(val)
+    var a = fetch('http://localhost:3500/products/'+val, {method:'GET'})
 
-//     .then(async function (res){
-//         console.log(await res.json());
-//         //console.log(varlist);
-//         return await res.json();
-//     })
-// }
-
-async function fetchResult2( data = {}) {
-    var val2=$('#searchBar').val();
-    // Default options are marked with *
-    const response = await fetch('http://localhost:3500/products/'+val2, {
-      method: 'GET', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      redirect: 'follow', // manual, *follow, error
-      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-      //body: JSON.stringify(data)
-    });
-    
-    return response.json();
-     // parses JSON response into native JavaScript objects
-    
-  }
+    .then(async function (res){
+        varlist = await res.json();
+        //console.log(result);      
+        return varlist;
+    })
+}
 
 window.onload=function(){
 
@@ -39,25 +33,76 @@ const searchBar = $("#searchBar");
 $("h1").hide();
 $("h2").hide();   
 
-searchBar.keyup(function(a){
-    $("#catlist").innerHTML="";
-    $("#brlist").innerHTML="";
+// var Prod = <div class='waw-product'>"+
+// "<a target="+"'_self'" +"href=$(link)>"+
+//     +"<div class="+"'waw-product-item'>"+
+//         "<div class="+"'product-img'> "+
+//         "<img src="+
+//         "'https://www.sefamerve.com/image/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg'>"+
+//         "</div>"+
+//         "<div class='product-detail'>"+
+//         "<span title='Kadın Giyim'>Kadın Giyim</span>"+
+//         "<h3 title='Karamel Lacivert Eşarp'>Karamel Lacivert Eşarp</h3>"+
+//         "<span class="+ "'price'>69.00 TL</span>'"+
+//        "</div>"+
+//     "</div>"+
+// "</a>"+
+// "</div>";
 
+searchBar.keyup(function(a){
+    
+    $("#brlist").innerHTML="";
+        
     var sv=searchBar.val()
     var stayUp=(sv.length >= 2);
-    console.log(sv)
+    //console.log(sv)
     //console.log(varlist["title"])
 
     if(stayUp){
-        varlist = fetchResult2();
-        console.log(varlist);
-        //console.log(res);
+        fetchResult2()
+
         $("h1").show("slow", ()=>{})
         $("h2").show("slow", ()=>{})
+
+        var kategoris=[];
+        for (i = 0; i < varlist.length; i++) {
+            $("#catlist").empty()
+            $("catlist").hide()
+            
+            if(!kategoris.includes(varlist[i]["categories"])){
+                kategoris.push(varlist[i]["categories"])
+            }
+        }
+        for(i=0; i<kategoris.length;i++){
+            node = document.createElement("LI"); 
+            var textnode = document.createTextNode(kategoris[i]);  
+            node.appendChild(textnode);
+            document.getElementById("catlist").appendChild(node);
+        }
+        $("catlist").show();
+
+        var markas=[];
+        for (i = 0; i < varlist.length; i++) {
+            $("#brlist").empty()
+            //$("#brlist").hide()
+            
+            if(!markas.includes(varlist[i]["brand"])){
+                markas.push(varlist[i]["brand"])
+            }
+        }
+        for(i=0; i<markas.length;i++){
+            node = document.createElement("LI"); 
+            var textnode = document.createTextNode(markas[i]);  
+            node.appendChild(textnode);
+            document.getElementById("brlist").appendChild(node);
+        }
+        $("#brlist").show();
+        $('#waw-products').show();
     }
+
     else{
-        $("h1").hide("slow", ()=>{})
-        $("h2").hide("slow", ()=>{})
+        //$("h1").hide("slow", ()=>{})
+        //$("h2").hide("slow", ()=>{})
     }
     $(window).click(function() {
         $("h1").hide("slow", ()=>{})
@@ -68,8 +113,13 @@ searchBar.keyup(function(a){
         event.stopPropagation();
     });
 
-    
+    document.getElementById('prodbox').append(Prod);
+
 });   
+
+// var textn=document.createTextNode(Prod.innerHTML)
+// //prnode.appendChild(textn);
+// document.getElementById("prodbox").appendChild(textn)
 
 }
 
@@ -88,9 +138,9 @@ searchBar.keyup(function(a){
         //     //sidebar.innerHTML = Cside;
         //     var c=0;
         //     for (i = 0; i < list.length; i++) {
-        //         titles = list[i]["title"].toUpperCase();
-        //         markas = list[i]["brand"].toUpperCase();
-        //         kategoris = list[i]["categories"].toUpperCase();
+        //         titles = varlist[i]["title"].toUpperCase();
+        //         markas = varlist[i]["brand"].toUpperCase();
+        //         kategoris = varlist[i]["categories"].toUpperCase();
             
         //         var inclM = markas.includes(sv.toUpperCase());
         //         var inclK = kategoris.includes(sv.toUpperCase());
@@ -100,7 +150,7 @@ searchBar.keyup(function(a){
 
         //         if(inclT || inclM || inclK ) {
                     
-        //             results[c] = list[i];
+        //             results[c] = varlist[i];
         //             //cats
         //             node = document.createElement("LI"); 
         //             var textnode = document.createTextNode(results[c].categories);
@@ -110,7 +160,7 @@ searchBar.keyup(function(a){
         //             document.getElementById("catlist").appendChild(node);
         //             var linebreak = document.createElement('br');
         //             node.appendChild(linebreak);
-        //             //brands
+        //             //markas
 
         //             node = document.createElement("LI"); 
         //             var textnode = document.createTextNode(results[c].brand);

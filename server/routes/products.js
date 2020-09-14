@@ -20,10 +20,10 @@ router.get("/:searchVal", async (request, response) => {
          {"brand":{"$regex":search,"$options":"i"}}]}, 'title categories brand imglinks link')
         var t = response.send(x);
         //console.log(x)
-        return x.then
+        return x
         
     }catch (err) {
-        response.json({message: err})
+        response.status(500).end();
     }
   });
 
