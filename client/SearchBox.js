@@ -23,14 +23,20 @@ searchBar.keyup(function(a){
     
     $("#brlist").innerHTML="";
     $("#oop").empty()
-        
+    
+    
+    
+    fetchResult2()
+    console.log(varlist.length)
+
     var sv=searchBar.val()
     var stayUp=(sv.length >= 2);
     //console.log(sv)
     //console.log(varlist["title"])
 
     if(stayUp){
-        fetchResult2()
+
+        
 
         $("h1").show("fast", ()=>{})
        
@@ -130,7 +136,7 @@ searchBar.keyup(function(a){
 
             node=document.createElement("span")
             node.className = "price"
-            var textnode = prods[i]["prices"];  
+            var textnode = prinode;  
             node.appendChild(textnode);
             document.getElementsByClassName("product-detail")[i].appendChild(node)
             
