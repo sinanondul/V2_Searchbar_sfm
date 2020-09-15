@@ -130,12 +130,12 @@ searchBar.keyup(function(a){
 
             node=document.createElement("span")
             node.className = "price"
-            var textnode = prinode;  
+            var textnode = prods[i]["prices"];  
             node.appendChild(textnode);
             document.getElementsByClassName("product-detail")[i].appendChild(node)
             
             
-            console.log(prods[0]["prices"])
+            // console.log(prods[0]["prices"])
       
 
 

@@ -1,7 +1,7 @@
 body {
-  padding-top: 100px;
+  padding-top: 30px;
   margin: 0;
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   background: #9a8fff;
 }
@@ -60,6 +60,7 @@ form:hover input{
   display: block;
 }
 
+
 form:hover .fa{
   background: #07051a;
   color: white;
@@ -88,6 +89,7 @@ form:hover .fa{
         z-index: 99999999999;
         box-shadow: 10px 4px 10px 0px rgba(255, 207, 255, 0.664);
         border-radius: 50px;
+        font-family: 'Dosis',Arial, Helvetica, sans-serif !important;
       }
       .waw-open {
         display: flex !important;
