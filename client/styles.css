@@ -263,6 +263,7 @@ form:hover .fa{
         padding-right: 5px;
         box-sizing: border-box;
         margin-bottom: 10px;
+        z-index: 1000000;
       }
       #waw-search-results .waw-products .waw-product a {
         text-decoration: none;
@@ -276,6 +277,7 @@ form:hover .fa{
         overflow: hidden;
         box-sizing: border-box;
         align-items: center;
+        z-index: 900000000;
       }
       
       #waw-search-results .waw-product .waw-product-item:hover {

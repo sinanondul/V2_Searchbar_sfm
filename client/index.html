@@ -1,79 +1,48 @@
 <html>
     <head>
+
       <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> 
-      <link rel="stylesheet" type="text/css" href="../client/styles.css">   
+      <link rel="stylesheet" type="text/css" href="../client/styles.css"> 
+      <script src="../client/SearchBox.js"></script>  
     </head>
-      <body>  
-        <div class="search-area js-search-area">
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
-          <form action="">
-              <input type="search" id="searchBar"  />
-              <i class="fa fa-search" onclick=fetchResult2()></i>
-          </form>
-          </div>
-         
-        <h1>
-        <div id = "Rpanel">
-        <div id="waw-search-results" class="waw-search-container waw-open " >
-          <div class="waw-search-sidebar">
-            <p id="sidebar"></p>
-              <h3 class="waw-category-title">Kategoriler</h3>
-                <hr>
-                  <ul data-group="categories" class="waw-cat-list">
-                    <li id ="catlist" ></li>
-                  </ul>
-              <h3 class="waw-category-title">Markalar</h3>
-                <hr>
-                  <ul data-group="categories" class="waw-cat-list">
-                    <li id="brlist"></li>
-                  </ul>            
-          </div>
-          
-            <div class= " waw-search-products">
-              <h3 class="waw-category-title">Ürünler</h3>
-              <span class="w-cls">X</span>
+    <body>  
+      <div class="search-area js-search-area">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"/>
+        <form action="">
+            <input type="search" id="searchBar" autocomplete="off"/>
+            <i class="fa fa-search" onclick=fetchResult2()></i>
+        </form>
+        </div>
+       
+      <h1>
+      <div id="waw-search-results" class="waw-search-container waw-open " >
+        <div class="waw-search-sidebar">
+          <p id="sidebar"></p>
+            <h3 class="waw-category-title">Kategoriler</h3>
               <hr>
-              <div class="waw-products">
-                <div id="prodbox"></div>
-              </div>
-            </div>
-          
+                <ul data-group="categories" class="waw-cat-list">
+                  <li id ="catlist" ></li>
+                </ul>
+            <h3 class="waw-category-title">Markalar</h3>
+              <hr>
+                <ul data-group="categories" class="waw-cat-list">
+                  <li id="brlist"></li>
+                </ul>            
         </div>
         
-        
-
-      </h1>
-    </div>
-
-
-
-        <!--h2>  
-          <div class="waw-search-products">
+          <div class= "waw-search-products">
             <h3 class="waw-category-title">Ürünler</h3>
             <span class="w-cls">X</span>
             <hr>
-            <div class="waw-products">
-              <div class="waw-product">
-              <a target="_self" href="https://www.sefamerve.com/tr/karaca-desenli-rayon-esarp-90617-12-karamel-lacivert--475929/">
-                  <div class="waw-product-item">
-                      <div class="product-img">
-                      <img src="
-                      https://www.sefamerve.com/image/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg">
-                      </div>
-                      <div class="product-detail">
-                      <span title="Kadın Giyim">Kadın Giyim</span>
-                      <h3 title="Karamel Lacivert Eşarp">Karamel Lacivert Eşarp</h3>
-                      <span class="price">69.00 TL</span>
-                      </div>
-                  </div>
-              </a>
-          </div> 
-        </div>
-      </div> <h2-->
-
-      
-        <script src="../client/SearchBox.js"></script>
-        </body>
+            <div class="waw-products" id="oop">
+              <!--div id= pr></div-->
+            </div>
+          </div>
+        
+      </div>
+        
+      </h1>
+    </body>
         
 
 </html>

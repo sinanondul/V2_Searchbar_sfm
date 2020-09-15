@@ -1,19 +1,4 @@
 
-"<a target="+"'_self'" +"href=$(link)>"+
-    +"<div class="+"'waw-product-item'>"+
-        "<div class="+"'product-img'> "+
-        "<img src="+
-        "'https://www.sefamerve.com/image/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg'>"+
-        "</div>"+
-        "<div class='product-detail'>"+
-        "<span title='Kadın Giyim'>Kadın Giyim</span>"+
-        "<h3 title='Karamel Lacivert Eşarp'>Karamel Lacivert Eşarp</h3>"+
-        "<span class="+ "'price'>69.00 TL</span>'"+
-       "</div>"+
-    "</div>"+
-"</a>"+
-"</div>";
-
 var varlist=[]
 function fetchResult2( ){
     var val=$('#searchBar').val();
@@ -28,30 +13,16 @@ function fetchResult2( ){
 }
 
 window.onload=function(){
-
 const searchBar = $("#searchBar");
 $("h1").hide();
 $("h2").hide();   
 
-// var Prod = <div class='waw-product'>"+
-// "<a target="+"'_self'" +"href=$(link)>"+
-//     +"<div class="+"'waw-product-item'>"+
-//         "<div class="+"'product-img'> "+
-//         "<img src="+
-//         "'https://www.sefamerve.com/image/cache/data/201910/24/sefamerve_esarp_karaca90617_12_4759291571909234711_5-1200x627.jpg'>"+
-//         "</div>"+
-//         "<div class='product-detail'>"+
-//         "<span title='Kadın Giyim'>Kadın Giyim</span>"+
-//         "<h3 title='Karamel Lacivert Eşarp'>Karamel Lacivert Eşarp</h3>"+
-//         "<span class="+ "'price'>69.00 TL</span>'"+
-//        "</div>"+
-//     "</div>"+
-// "</a>"+
-// "</div>";
+;
 
 searchBar.keyup(function(a){
     
     $("#brlist").innerHTML="";
+    $("#oop").empty()
         
     var sv=searchBar.val()
     var stayUp=(sv.length >= 2);
@@ -61,9 +32,8 @@ searchBar.keyup(function(a){
     if(stayUp){
         fetchResult2()
 
-        $("h1").show("slow", ()=>{})
-        $("h2").show("slow", ()=>{})
-
+        $("h1").show("fast", ()=>{})
+       
         var kategoris=[];
         for (i = 0; i < varlist.length; i++) {
             $("#catlist").empty()
@@ -96,13 +66,91 @@ searchBar.keyup(function(a){
             node.appendChild(textnode);
             document.getElementById("brlist").appendChild(node);
         }
+
+        var prods=[];
+        for(i=0; i < varlist.length;i++){            
+            if(!prods.includes(varlist[i])){
+                prods.push(varlist[i])
+            }
+        }
+
+        
+        //console.log(prods);
+        //$('#waw-products').hide();
+        for (i=0; i<prods.length;i++){
+            var catnode = document.createTextNode(prods[i]["categories"]);
+            var titnode = document.createTextNode(prods[i]["title"]);
+            var prinode = document.createTextNode(prods[i]["prices"]);
+
+            
+            node = document.createElement("div");
+            node.className="waw-product";
+            document.getElementById("oop").appendChild(node);
+
+            //$('#AA').empty()
+            node = document.createElement("a")
+            node.setAttribute('target','_self')  
+            node.className ="a"
+            node.setAttribute = ('href', prods[i]['links']) 
+            document.getElementsByClassName("waw-product")[i].appendChild(node);
+
+            //$('#waw-product-item').empty()
+            node = document.createElement("div");
+            node.className ="waw-product-item";
+            document.getElementsByClassName("a")[i].appendChild(node)
+
+            // //$('#product-img').empty()
+            node = document.createElement("div")
+            node.className = "product-img";
+            document.getElementsByClassName("waw-product-item")[i].appendChild(node)
+
+            // //$('#product-detail').empty()
+            node = document.createElement("img")
+            node.src = prods[i]['imglinks'];
+            document.getElementsByClassName("product-img")[i].appendChild(node)
+
+
+            node = document.createElement("div")
+            node.className = "product-detail"
+            document.getElementsByClassName("waw-product-item")[i].appendChild(node)
+
+            
+            node = document.createElement("span")
+            var textnode = catnode;  
+            node.appendChild(textnode);
+            node.setAttribute('title', prods[i]['categories'])
+            document.getElementsByClassName("product-detail")[i].appendChild(node)
+
+            node = document.createElement("h3")
+            var textnode = titnode;  
+            node.appendChild(textnode);
+            node.className="title"
+            document.getElementsByClassName("product-detail")[i].appendChild(node)
+
+
+            node=document.createElement("span")
+            node.className = "price"
+            var textnode = prinode;  
+            node.appendChild(textnode);
+            document.getElementsByClassName("product-detail")[i].appendChild(node)
+            
+            
+            console.log(prods[0]["prices"])
+      
+
+
+            //$('waw-products').show();
+        }
+
+
+
         $("#brlist").show();
-        $('#waw-products').show();
+        //$('#waw-products').show();
     }
 
     else{
-        //$("h1").hide("slow", ()=>{})
-        //$("h2").hide("slow", ()=>{})
+        $("h1").hide("slow", ()=>{})
+        $("h2").hide("slow", ()=>{})
     }
     $(window).click(function() {
         $("h1").hide("slow", ()=>{})
@@ -113,82 +161,11 @@ searchBar.keyup(function(a){
         event.stopPropagation();
     });
 
-    document.getElementById('prodbox').append(Prod);
+    //document.getElementById('prodbox').append(Prod);
 
 });   
 
-// var textn=document.createTextNode(Prod.innerHTML)
-// //prnode.appendChild(textn);
-// document.getElementById("prodbox").appendChild(textn)
-
 }
 
-
-
-        // if(stayUp){  
-        //     console.log("Searching '"+ sv + "' ..");
-
-        //     });
-        //     $("h2").show("slow", ()=>{
-        //         console.log("Showing Search Results Pane");
-        //     });
-
-
-        //     //popUp.innerHTML = Cpop;
-        //     //sidebar.innerHTML = Cside;
-        //     var c=0;
-        //     for (i = 0; i < list.length; i++) {
-        //         titles = varlist[i]["title"].toUpperCase();
-        //         markas = varlist[i]["brand"].toUpperCase();
-        //         kategoris = varlist[i]["categories"].toUpperCase();
-            
-        //         var inclM = markas.includes(sv.toUpperCase());
-        //         var inclK = kategoris.includes(sv.toUpperCase());
-        //         var inclT = titles.includes(sv.toUpperCase());
-
-               
-
-        //         if(inclT || inclM || inclK ) {
-                    
-        //             results[c] = varlist[i];
-        //             //cats
-        //             node = document.createElement("LI"); 
-        //             var textnode = document.createTextNode(results[c].categories);
-                    
-                    
-        //             node.appendChild(textnode);
-        //             document.getElementById("catlist").appendChild(node);
-        //             var linebreak = document.createElement('br');
-        //             node.appendChild(linebreak);
-        //             //markas
-
-        //             node = document.createElement("LI"); 
-        //             var textnode = document.createTextNode(results[c].brand);
-
-        //             node.appendChild(textnode);
-        //             document.getElementById("brlist").appendChild(node);
-        //             var linebreak = document.createElement('br');
-        //             node.appendChild(linebreak);
-
-        //             c++;
-        //         }
-
-        //         // $.each(results, function(key,val){
-        //         //     var toAdd  = val.categories;
-        //         //     console.log(toAdd);
-        //         //     $("toHere").innerHTML=toAdd;
-        //         // })
-
-        //         //var node = $("toHere");
-
-                
-
-        //              //var textnode = document.createTextNode(results[i]["categories"]); 
-        //             // console.log(node);
-        //             // console.log(textnode);
-                    
-        //             // node.appendChild(textnode);
-        //             // document.getElementById("catlist").appendChild(node);
-        //             // $("#catlist").append(node);
                
 
