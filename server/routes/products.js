@@ -17,7 +17,7 @@ router.get("/:searchVal", async (request, response) => {
         const search=`.*${request.params.searchVal}.*`;
         const x = await Product.find({$or:[{"title":{"$regex":search,"$options":"i"}},
         {"categories":{"$regex":search,"$options":"i"}},
-         {"brand":{"$regex":search,"$options":"i"}}]}, 'title categories brand imglinks link')
+         {"brand":{"$regex":search,"$options":"i"}}]}, 'title categories brand imglinks link prices')
         var t = response.send(x);
         //console.log(x)
         return x
